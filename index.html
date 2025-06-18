@@ -99,7 +99,6 @@
             const downloadButton = document.getElementById('download-btn');
             const originalButtonContent = downloadButton.innerHTML;
 
-            // Mostra o indicador de carregamento
             downloadButton.disabled = true;
             downloadButton.innerHTML = `
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -109,7 +108,6 @@
                 Gerando PDF...
             `;
             
-            // Adicionado bloco try...catch...finally para tratamento de erros
             try {
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF('p', 'pt', 'a4');
@@ -128,24 +126,21 @@
                     const imgData = canvas.toDataURL('image/jpeg', 0.98);
                     const imgHeight = (canvas.height * usableWidth) / canvas.width;
 
-                    // Adiciona nova página se a seção não couber
                     if (y > margin && y + imgHeight > doc.internal.pageSize.getHeight() - margin) {
                         doc.addPage();
                         y = margin;
                     }
                     
                     doc.addImage(imgData, 'JPEG', margin, y, usableWidth, imgHeight);
-                    y += imgHeight + 15; // Espaçamento entre as seções
+                    y += imgHeight + 15;
                 }
                 
                 doc.save('Curriculo_Gabriel_Coelho.pdf');
 
             } catch (error) {
-                // Em caso de erro, exibe um alerta e loga o erro no console
                 console.error("Erro ao gerar o PDF:", error);
                 alert("Ocorreu um erro ao gerar o PDF. Verifique o console do navegador para mais detalhes.");
             } finally {
-                // Garante que o botão seja restaurado, mesmo se houver erro
                 downloadButton.disabled = false;
                 downloadButton.innerHTML = originalButtonContent;
             }
