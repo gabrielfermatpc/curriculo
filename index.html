@@ -11,9 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Libraries for dynamic PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" xintegrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoVBL5gI9kLmbG0C+wFjrBgixIbbGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" xintegrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Library for dynamic PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" xintegrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style>
         /* Aplicando a fonte Inter ao corpo */
@@ -41,6 +40,18 @@
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
+        
+        /* Regras de quebra de página para o PDF */
+        .experience-item,
+        .academic-item,
+        .skills-category,
+        .activities-list li {
+            page-break-inside: avoid;
+        }
+        .resume-section {
+             page-break-inside: avoid;
+        }
+
         /* Fallback para impressão via navegador */
         @media print {
             body { background-color: white; }
@@ -93,7 +104,7 @@
                         Habilidades
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        <div>
+                        <div class="skills-category">
                             <h4 class="font-semibold text-slate-800">Programação</h4>
                             <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
                                 <li>Python (RDKit, Streamlit, Manim)</li>
@@ -101,7 +112,7 @@
                                 <li>HTML & CSS (Básico)</li>
                             </ul>
                         </div>
-                         <div>
+                         <div class="skills-category">
                             <h4 class="font-semibold text-slate-800">Software e Ferramentas</h4>
                             <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
                                 <li>LaTeX (Avançado, TKZ)</li>
@@ -109,7 +120,7 @@
                                 <li>GeoGebra, Canva</li>
                             </ul>
                         </div>
-                        <div>
+                        <div class="skills-category">
                             <h4 class="font-semibold text-slate-800">Idiomas e Outros</h4>
                             <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
                                 <li>Inglês (Avançado)</li>
@@ -156,12 +167,12 @@
                         Formação Acadêmica
                     </h2>
                      <div class="space-y-4">
-                        <div>
+                        <div class="academic-item">
                             <h3 class="text-md font-semibold text-slate-800">Licenciatura em Matemática e Física</h3>
                             <p class="text-sm font-medium text-slate-600">Universidade Federal do Oeste do Pará (UFOPA)</p>
                             <p class="text-xs text-slate-500">Previsão de Conclusão: 07/2025</p>
                         </div>
-                         <div>
+                         <div class="academic-item">
                             <h3 class="text-md font-semibold text-slate-800">Ensino Médio</h3>
                             <p class="text-sm font-medium text-slate-600">Escola Estadual de Ensino Médio Diocesana São Francisco</p>
                             <p class="text-xs text-slate-500">Conclusão: 2019</p>
@@ -175,7 +186,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
                         Atividades Acadêmicas Relevantes
                     </h2>
-                    <ul class="list-disc list-inside space-y-2">
+                    <ul class="list-disc list-inside space-y-2 activities-list">
                         <li>Membro da comissão organizadora da <strong>V Feira de Ciências e Tecnologias Educacionais da Mesorregião do Baixo Amazonas (FECITBA)</strong> em 2022.</li>
                         <li>Ministrou o minicurso <strong>"Introdução ao LaTeX"</strong> (Julho de 2023), promovido pelo Grupo de Estudo Aplicados e Aprofundados em Física (GEAAF) da UFOPA.</li>
                         <li>Orientou o projeto de iniciação científica <strong>"PROCESSOS DE FABRICAÇÃO DO VIDRO"</strong> no Clube de Ciências da UFOPA (2023).</li>
@@ -198,9 +209,6 @@
     </footer>
 
     <script>
-        // Torna a biblioteca jsPDF globalmente acessível
-        window.jsPDF = window.jspdf.jsPDF;
-
         async function generatePDF() {
             const downloadButton = document.getElementById('download-btn');
             const originalButtonContent = downloadButton.innerHTML;
@@ -215,35 +223,18 @@
                 Gerando PDF...
             `;
             
-            const doc = new jsPDF('p', 'pt', 'a4');
-            const sections = document.querySelectorAll('.resume-section');
-            const pageWidth = doc.internal.pageSize.getWidth();
-            const margin = 40;
-            const usableWidth = pageWidth - (margin * 2);
-            let y = margin;
+            const element = document.getElementById('resume-content');
             
-            // Itera sobre cada secção para a adicionar ao PDF
-            for (let i = 0; i < sections.length; i++) {
-                const section = sections[i];
-                const canvas = await html2canvas(section, {
-                    scale: 2,
-                    useCORS: true
-                });
-                
-                const imgData = canvas.toDataURL('image/jpeg', 0.98);
-                const imgHeight = (canvas.height * usableWidth) / canvas.width;
+            const opt = {
+              margin:       [40, 40, 40, 40], // Margens em pt
+              filename:     'Curriculo_Gabriel_Coelho.pdf',
+              image:        { type: 'jpeg', quality: 0.98 },
+              html2canvas:  { scale: 2, useCORS: true, logging: false },
+              jsPDF:        { unit: 'pt', format: 'a4', orientation: 'portrait' },
+              pagebreak:    { mode: ['css', 'legacy'] } // Usa as regras de CSS para quebrar a página
+            };
 
-                // Adiciona uma nova página se a secção não couber na atual
-                if (y + imgHeight > doc.internal.pageSize.getHeight() - margin) {
-                    doc.addPage();
-                    y = margin; // Reinicia a posição Y para a nova página
-                }
-                
-                doc.addImage(imgData, 'JPEG', margin, y, usableWidth, imgHeight);
-                y += imgHeight + 15; // Atualiza a posição Y para a próxima secção
-            }
-            
-            doc.save('Curriculo_Gabriel_Coelho.pdf');
+            await html2pdf().from(element).set(opt).save();
 
             // Restaura o estado original do botão
             downloadButton.disabled = false;
