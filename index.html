@@ -37,6 +37,26 @@
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
+
+        /* Print-specific styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            .no-print {
+                display: none;
+            }
+            .resume-section {
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+                margin-bottom: 1rem;
+            }
+             main, .max-w-4xl {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-700">
@@ -60,6 +80,13 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     Santarém, PA
                 </div>
+            </div>
+             <!-- Print Button -->
+            <div class="mt-6 no-print">
+                <button onclick="window.print()" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-printer"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                    Imprimir / Salvar em PDF
+                </button>
             </div>
         </header>
 
@@ -171,7 +198,7 @@
             </div>
         </main>
         
-        <footer class="text-center mt-8 text-xs text-gray-400">
+        <footer class="text-center mt-8 text-xs text-gray-400 no-print">
             <p>Currículo gerado em 18 de Junho de 2025.</p>
         </footer>
 
