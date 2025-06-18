@@ -7,14 +7,14 @@
 
     <meta property="og:title" content="Currículo - Gabriel Pereira Coelho">
     <meta property="og:description" content="Discente de Licenciatura em Matemática e Física na UFOPA, com experiência em iniciação à docência e pesquisa.">
-    <meta property="og:image" content="https://gabrielpereiracoelho.netlify.app/foto-perfil.png">
+    <meta property="og:image" content="https://gabrielpereiracoelho.netlify.app/foto-perfil.jpg">
     <meta property="og:url" content="https://gabrielpereiracoelho.netlify.app/">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Currículo - Gabriel Pereira Coelho">
     <meta name="twitter:description" content="Discente de Licenciatura em Matemática e Física na UFOPA, com experiência em iniciação à docência e pesquisa.">
-    <meta name="twitter:image" content="https://gabrielpereiracoelho.netlify.app/foto-perfil.png">
+    <meta name="twitter:image" content="https://gabrielpereiracoelho.netlify.app/foto-perfil.jpg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,10 @@
         .section-title { display: flex; align-items: center; gap: 0.75rem; font-size: 1.25rem; font-weight: 600; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
         .icon-fix { position: relative; top: 1px; }
         @media print { 
-            body { background-color: white; } 
+            body { 
+                background-color: white; 
+                font-size: 10pt; /* Fonte menor para impressão */
+            } 
             .no-print { display: none; } 
             .resume-section { box-shadow: none; border: 1px solid #e5e7eb; } 
         }
@@ -40,7 +43,7 @@
         <header class="bg-white p-6 rounded-xl shadow-md resume-section flex flex-col sm:flex-row items-center gap-6">
             
             <div class="flex-shrink-0">
-                <img src="foto-perfil.png" alt="Foto de Gabriel Pereira Coelho" class="w-32 h-32 rounded-full object-cover shadow-md">
+                <img src="foto-perfil.jpg" alt="Foto de Gabriel Pereira Coelho" class="w-32 h-32 rounded-full object-cover shadow-md">
             </div>
 
             <div class="text-center sm:text-left">
@@ -102,6 +105,13 @@
                 </ul>
             </section>
         </main>
+        
+        <footer class="text-center py-6 no-print">
+            <button onclick="window.print()" class="inline-flex items-center gap-2 bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                Baixar PDF
+            </button>
+        </footer>
 
     </div>
     
