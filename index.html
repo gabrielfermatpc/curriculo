@@ -33,7 +33,7 @@
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
-        /* Estilos específicos para impressão */
+        /* Estilos específicos para impressão (mantidos caso precise) */
         @media print {
             body {
                 background-color: white;
@@ -44,8 +44,6 @@
             .resume-section {
                 box-shadow: none;
                 border: 1px solid #e5e7eb;
-                margin-bottom: 1rem;
-                padding: 1rem;
             }
              main, .max-w-4xl {
                 max-width: 100%;
@@ -53,7 +51,6 @@
                 margin: 0;
             }
             body, .resume-section {
-                /* Força a renderização de texto preto na impressão */
                 color: black !important; 
                 -webkit-print-color-adjust: exact;
             }
@@ -183,12 +180,12 @@
         </main>
         
         <footer class="text-center mt-4 no-print">
-             <!-- Botão de Imprimir movido para o final -->
+             <!-- Botão de Download movido para o final -->
             <div class="mb-4">
-                <button onclick="window.print()" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-printer"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-                    Imprimir / Salvar em PDF
-                </button>
+                <a href="https://drive.google.com/file/d/1vaLooXtPZRmjB2TT8RE8Qp6Wj2AoKhLD/view?usp=sharing" download="Curriculo_Gabriel_Coelho.pdf" class="bg-green-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-700 transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl w-max">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Baixar Currículo em PDF
+                </a>
             </div>
             <p class="text-xs text-gray-400">Currículo gerado em 18 de Junho de 2025.</p>
         </footer>
