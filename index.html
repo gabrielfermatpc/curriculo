@@ -52,11 +52,11 @@
 <body class="text-slate-700">
 
     <!-- Wrapper for the content to be converted to PDF -->
-    <div id="resume-content" class="bg-white">
-        <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+    <div id="resume-wrapper">
+        <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8" id="resume-content">
 
             <!-- Seção do Cabeçalho -->
-            <header class="text-center mb-8 bg-white p-6 rounded-xl">
+            <header class="text-center mb-8 bg-white p-6 rounded-xl shadow-md resume-section">
                 <h1 class="text-4xl font-bold text-slate-800">Gabriel Pereira Coelho</h1>
                 <p class="text-lg text-indigo-600 font-medium">Bolsista de Iniciação Científica - CNPq</p>
                 <div class="mt-4 flex justify-center items-center flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
@@ -189,7 +189,7 @@
     <footer class="text-center pb-8 no-print">
          <!-- Botão de Download dinâmico -->
         <div class="mb-4">
-            <button onclick="generatePDF()" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700 transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl w-max">
+            <button id="download-btn" onclick="generatePDF()" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700 transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl w-max">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Baixar Currículo em PDF
             </button>
@@ -198,47 +198,56 @@
     </footer>
 
     <script>
-        function generatePDF() {
-            // Pega o elemento a ser convertido
-            const element = document.getElementById('resume-content');
+        // Torna a biblioteca jsPDF globalmente acessível
+        window.jsPDF = window.jspdf.jsPDF;
+
+        async function generatePDF() {
+            const downloadButton = document.getElementById('download-btn');
+            const originalButtonContent = downloadButton.innerHTML;
+
+            // Desativa o botão e mostra o indicador de carregamento
+            downloadButton.disabled = true;
+            downloadButton.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Gerando PDF...
+            `;
             
-            // Pega o nome do ficheiro
-            const filename = 'Curriculo_Gabriel_Coelho.pdf';
-
-            // Pega as bibliotecas do window
-            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'pt', 'a4');
+            const sections = document.querySelectorAll('.resume-section');
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const margin = 40;
+            const usableWidth = pageWidth - (margin * 2);
+            let y = margin;
             
-            // Tira a "fotografia" do elemento
-            html2canvas(element, {
-                scale: 2, // Aumenta a resolução da imagem
-                useCORS: true
-            }).then(canvas => {
-                // Pega as dimensões da imagem
-                const imgData = canvas.toDataURL('image/png');
-                const imgWidth = 8.5; // Largura de uma página A4 em polegadas
-                const pageHeight = 11; // Altura de uma página A4 em polegadas
-                const imgHeight = canvas.height * imgWidth / canvas.width;
-                let heightLeft = imgHeight;
+            // Itera sobre cada secção para a adicionar ao PDF
+            for (let i = 0; i < sections.length; i++) {
+                const section = sections[i];
+                const canvas = await html2canvas(section, {
+                    scale: 2,
+                    useCORS: true
+                });
+                
+                const imgData = canvas.toDataURL('image/jpeg', 0.98);
+                const imgHeight = (canvas.height * usableWidth) / canvas.width;
 
-                // Inicializa o PDF
-                const doc = new jsPDF('p', 'in', 'a4');
-                let position = 0;
-
-                // Adiciona a imagem ao PDF
-                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-
-                // Adiciona novas páginas se o conteúdo for maior que uma página
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
+                // Adiciona uma nova página se a secção não couber na atual
+                if (y + imgHeight > doc.internal.pageSize.getHeight() - margin) {
                     doc.addPage();
-                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pageHeight;
+                    y = margin; // Reinicia a posição Y para a nova página
                 }
                 
-                // Guarda o ficheiro PDF
-                doc.save(filename);
-            });
+                doc.addImage(imgData, 'JPEG', margin, y, usableWidth, imgHeight);
+                y += imgHeight + 15; // Atualiza a posição Y para a próxima secção
+            }
+            
+            doc.save('Curriculo_Gabriel_Coelho.pdf');
+
+            // Restaura o estado original do botão
+            downloadButton.disabled = false;
+            downloadButton.innerHTML = originalButtonContent;
         }
     </script>
 </body>
