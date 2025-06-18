@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Gabriel Pereira Coelho</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <style>
+        /* Applying Inter font to the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* A slightly lighter gray */
+        }
+        /* Custom styles for cards and spacing */
+        .resume-section {
+            background-color: white;
+            border-radius: 0.75rem; /* Slightly larger radius */
+            padding: 1.5rem; /* 24px */
+            margin-bottom: 1.5rem; /* 24px */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        /* Style for section titles */
+        .section-title {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 600;
+            color: #111827; /* Darker gray for titles */
+            border-bottom: 2px solid #3b82f6; /* Blue accent */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- Header Section -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800">Gabriel Pereira Coelho</h1>
+            <p class="text-lg text-blue-600 font-medium">Bolsista de Iniciação Científica - CNPq</p>
+            <div class="mt-4 flex justify-center items-center flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
+                <a href="tel:+5593991861439" class="flex items-center gap-2 hover:text-blue-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    (93) 99186-1439
+                </a>
+                <a href="mailto:gabrielpereiracoelho18@gmail.com" class="flex items-center gap-2 hover:text-blue-600 transition-colors">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    gabrielpereiracoelho18@gmail.com
+                </a>
+                 <div class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Santarém, PA
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Resumo Profissional -->
+            <section class="resume-section">
+                <h2 class="section-title">Resumo Profissional</h2>
+                <p class="text-justify">Discente do último semestre de Licenciatura Integrada em Matemática e Física na UFOPA, com sólida experiência em projetos de iniciação à docência e pesquisa. Atuou como bolsista no PIBID, na Residência Pedagógica e no Clube de Ciências da UFOPA. Atualmente é bolsista de iniciação científica (PIBIC) no Laboratório de Simulação Computacional e Educação Científica (LABISC), desenvolvendo algoritmos para predição de peptídeos. Possui conhecimento em programação Python (incluindo Manim, RDKit, SQL, Streamlit), controle de versão com Git e GitHub, domínio avançado de inglês e proficiência em LaTeX.</p>
+            </section>
+
+            <!-- Columns for main sections -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-6">
+                
+                <!-- Left Column -->
+                <div class="lg:col-span-2">
+                    <!-- Experiência -->
+                    <section class="resume-section">
+                        <h2 class="section-title">Experiência</h2>
+                        <div class="space-y-6">
+                            <div class="experience-item">
+                                <h3 class="text-lg font-semibold text-gray-800">Bolsista de Iniciação Científica (PIBIC)</h3>
+                                <p class="text-md font-medium text-gray-600">Universidade Federal do Oeste do Pará (UFOPA)</p>
+                                <p class="text-sm text-gray-500">2024 - Atual</p>
+                                <p class="mt-2 text-justify">Projeto: "Desenvolvimento de algoritmos para predição de peptídeos Quorum Sensing" no LABISC.</p>
+                            </div>
+                            <div class="experience-item">
+                                <h3 class="text-lg font-semibold text-gray-800">Residente (Bolsista)</h3>
+                                <p class="text-md font-medium text-gray-600">Residência Pedagógica - UFOPA</p>
+                                <p class="text-sm text-gray-500">2022 - 2024</p>
+                                <p class="mt-2 text-justify">Atuação em ambiente escolar com dedicação exclusiva e carga horária de 20 horas semanais.</p>
+                            </div>
+                            <div class="experience-item">
+                                <h3 class="text-lg font-semibold text-gray-800">Voluntário</h3>
+                                <p class="text-md font-medium text-gray-600">Clube de Ciências da UFOPA (CCIUFOPA)</p>
+                                <p class="text-sm text-gray-500">2023 - 2024</p>
+                                <p class="mt-2 text-justify">Orientação do projeto "Processos de Fabricação do Vidro".</p>
+                            </div>
+                             <div class="experience-item">
+                                <h3 class="text-lg font-semibold text-gray-800">Bolsa de Iniciação à Docência</h3>
+                                <p class="text-md font-medium text-gray-600">Programa Institucional de Bolsas (PIBID)</p>
+                                <p class="text-sm text-gray-500">Novembro 2020 - Abril 2022</p>
+                                <p class="mt-2 text-justify">Participação no programa com carga horária de 20 horas semanais e dedicação exclusiva.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="lg:col-span-1">
+                     <!-- Formação Acadêmica -->
+                    <section class="resume-section">
+                        <h2 class="section-title">Formação Acadêmica</h2>
+                         <div class="space-y-4">
+                            <div>
+                                <h3 class="text-md font-semibold text-gray-800">Licenciatura em Matemática e Física</h3>
+                                <p class="text-sm font-medium text-gray-600">Universidade Federal do Oeste do Pará (UFOPA)</p>
+                                <p class="text-xs text-gray-500">Previsão de Conclusão: 07/2025</p>
+                            </div>
+                             <div>
+                                <h3 class="text-md font-semibold text-gray-800">Ensino Médio</h3>
+                                <p class="text-sm font-medium text-gray-600">Escola Estadual de Ensino Médio Diocesana São Francisco</p>
+                                <p class="text-xs text-gray-500">Conclusão: 2019</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Habilidades -->
+                    <section class="resume-section">
+                        <h2 class="section-title">Habilidades</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Programação</h4>
+                                <ul class="list-disc list-inside text-sm mt-1 space-y-1">
+                                    <li>Python (RDKit, Streamlit, Manim)</li>
+                                    <li>SQL (Básico)</li>
+                                    <li>HTML & CSS (Básico)</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-gray-800">Software e Ferramentas</h4>
+                                <ul class="list-disc list-inside text-sm mt-1 space-y-1">
+                                    <li>LaTeX (Avançado, TKZ)</li>
+                                    <li>Git & GitHub</li>
+                                    <li>GeoGebra, Canva</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Idiomas e Outros</h4>
+                                <ul class="list-disc list-inside text-sm mt-1 space-y-1">
+                                    <li>Inglês (Avançado)</li>
+                                    <li>Pacote Office</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Atividades Acadêmicas Relevantes (MOVED HERE) -->
+                    <section class="resume-section">
+                        <h2 class="section-title">Atividades Acadêmicas</h2>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li>Comissão organizadora da <strong>V FECITBA</strong> (2022).</li>
+                            <li>Ministrou minicurso <strong>"Introdução ao LaTeX"</strong> (2023).</li>
+                            <li>Orientou o projeto <strong>"PROCESSOS DE FABRICAÇÃO DO VIDRO"</strong> (2023).</li>
+                            <li>Participante na <strong>76ª Reunião Anual da SBPC</strong> (2024).</li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="text-center mt-8 text-xs text-gray-400">
+            <p>Currículo gerado em 18 de Junho de 2025.</p>
+        </footer>
+
+    </div>
+</body>
+</html>
