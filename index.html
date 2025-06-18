@@ -10,8 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- html2pdf.js Library for dynamic PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" xintegrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Libraries for dynamic PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" xintegrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoVBL5gI9kLmbG0C+wFjrBgixIbbGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" xintegrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         /* Aplicando a fonte Inter ao corpo */
         body {
@@ -38,11 +41,7 @@
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
-        .icon-placeholder {
-            display: none; /* Esconde os placeholders por padrão */
-        }
-
-        /* Estilos específicos para impressão (fallback) */
+        /* Fallback para impressão via navegador */
         @media print {
             body { background-color: white; }
             .no-print { display: none; }
@@ -53,26 +52,23 @@
 <body class="text-slate-700">
 
     <!-- Wrapper for the content to be converted to PDF -->
-    <div id="resume-content">
+    <div id="resume-content" class="bg-white">
         <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
 
             <!-- Seção do Cabeçalho -->
-            <header class="text-center mb-8 bg-white p-6 rounded-xl shadow-md">
+            <header class="text-center mb-8 bg-white p-6 rounded-xl">
                 <h1 class="text-4xl font-bold text-slate-800">Gabriel Pereira Coelho</h1>
                 <p class="text-lg text-indigo-600 font-medium">Bolsista de Iniciação Científica - CNPq</p>
                 <div class="mt-4 flex justify-center items-center flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
                     <a href="tel:+5593991861439" class="flex items-center gap-2 hover:text-indigo-600 transition-colors">
-                        <span class="icon-placeholder">Telefone:</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         (93) 99186-1439
                     </a>
                     <a href="mailto:gabrielpereiracoelho18@gmail.com" class="flex items-center gap-2 hover:text-indigo-600 transition-colors">
-                        <span class="icon-placeholder">Email:</span>
                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         gabrielpereiracoelho18@gmail.com
                     </a>
                      <div class="flex items-center gap-2">
-                        <span class="icon-placeholder">Localização:</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                         Santarém, PA
                     </div>
@@ -84,7 +80,6 @@
                  <!-- Resumo Profissional -->
                 <section class="resume-section">
                     <h2 class="section-title">
-                        <span class="icon-placeholder">Ícone de Utilizador</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                         Resumo Profissional
                     </h2>
@@ -94,7 +89,6 @@
                 <!-- Habilidades -->
                 <section class="resume-section">
                     <h2 class="section-title">
-                        <span class="icon-placeholder">Ícone de Brilhos</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
                         Habilidades
                     </h2>
@@ -128,7 +122,6 @@
                 <!-- Experiência -->
                 <section class="resume-section">
                     <h2 class="section-title">
-                        <span class="icon-placeholder">Ícone de Pasta</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                         Experiência
                     </h2>
@@ -159,7 +152,6 @@
                 <!-- Formação Acadêmica -->
                 <section class="resume-section">
                     <h2 class="section-title">
-                        <span class="icon-placeholder">Ícone de Chapéu de Graduação</span>
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         Formação Acadêmica
                     </h2>
@@ -180,7 +172,6 @@
                 <!-- Atividades Acadêmicas Relevantes -->
                 <section class="resume-section">
                     <h2 class="section-title">
-                        <span class="icon-placeholder">Ícone de Prémio</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
                         Atividades Acadêmicas Relevantes
                     </h2>
@@ -207,34 +198,46 @@
     </footer>
 
     <script>
-        // Função para gerar PDF a partir do conteúdo HTML
         function generatePDF() {
-            // Clona o elemento do currículo para manipulação
-            const element = document.getElementById('resume-content').cloneNode(true);
+            // Pega o elemento a ser convertido
+            const element = document.getElementById('resume-content');
             
-            // Remove os SVGs do clone, deixando apenas os placeholders (que estão escondidos)
-            // Isso evita erros de renderização da biblioteca html2pdf
-            element.querySelectorAll('svg').forEach(svg => svg.remove());
+            // Pega o nome do ficheiro
+            const filename = 'Curriculo_Gabriel_Coelho.pdf';
+
+            // Pega as bibliotecas do window
+            const { jsPDF } = window.jspdf;
             
-            // Adiciona o clone modificado ao corpo temporariamente para renderização
-            // (invisível para o utilizador)
-            element.style.position = 'absolute';
-            element.style.left = '-9999px';
-            document.body.appendChild(element);
+            // Tira a "fotografia" do elemento
+            html2canvas(element, {
+                scale: 2, // Aumenta a resolução da imagem
+                useCORS: true
+            }).then(canvas => {
+                // Pega as dimensões da imagem
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 8.5; // Largura de uma página A4 em polegadas
+                const pageHeight = 11; // Altura de uma página A4 em polegadas
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                let heightLeft = imgHeight;
 
-            // Define as opções para a geração do PDF
-            const opt = {
-              margin:       [0.5, 0.5, 0.5, 0.5], // [top, left, bottom, right] em polegadas
-              filename:     'Curriculo_Gabriel_Coelho.pdf',
-              image:        { type: 'jpeg', quality: 0.98 },
-              html2canvas:  { scale: 2, useCORS: true }, // Escala maior para melhor qualidade
-              jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-            };
+                // Inicializa o PDF
+                const doc = new jsPDF('p', 'in', 'a4');
+                let position = 0;
 
-            // Usa a biblioteca html2pdf para criar e salvar o arquivo a partir do clone
-            html2pdf().from(element).set(opt).save().then(() => {
-                // Remove o clone do corpo após a geração do PDF
-                document.body.removeChild(element);
+                // Adiciona a imagem ao PDF
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                // Adiciona novas páginas se o conteúdo for maior que uma página
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    doc.addPage();
+                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                // Guarda o ficheiro PDF
+                doc.save(filename);
             });
         }
     </script>
