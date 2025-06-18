@@ -38,18 +38,15 @@
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
         }
-        /* Estilos específicos para impressão (mantidos como fallback) */
+        .icon-placeholder {
+            display: none; /* Esconde os placeholders por padrão */
+        }
+
+        /* Estilos específicos para impressão (fallback) */
         @media print {
-            body {
-                background-color: white;
-            }
-            .no-print {
-                display: none;
-            }
-            .resume-section {
-                box-shadow: none;
-                border: 1px solid #e5e7eb;
-            }
+            body { background-color: white; }
+            .no-print { display: none; }
+            .resume-section { box-shadow: none; border: 1px solid #e5e7eb; }
         }
     </style>
 </head>
@@ -65,14 +62,17 @@
                 <p class="text-lg text-indigo-600 font-medium">Bolsista de Iniciação Científica - CNPq</p>
                 <div class="mt-4 flex justify-center items-center flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600">
                     <a href="tel:+5593991861439" class="flex items-center gap-2 hover:text-indigo-600 transition-colors">
+                        <span class="icon-placeholder">Telefone:</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         (93) 99186-1439
                     </a>
                     <a href="mailto:gabrielpereiracoelho18@gmail.com" class="flex items-center gap-2 hover:text-indigo-600 transition-colors">
+                        <span class="icon-placeholder">Email:</span>
                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         gabrielpereiracoelho18@gmail.com
                     </a>
                      <div class="flex items-center gap-2">
+                        <span class="icon-placeholder">Localização:</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                         Santarém, PA
                     </div>
@@ -84,6 +84,7 @@
                  <!-- Resumo Profissional -->
                 <section class="resume-section">
                     <h2 class="section-title">
+                        <span class="icon-placeholder">Ícone de Utilizador</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                         Resumo Profissional
                     </h2>
@@ -93,15 +94,13 @@
                 <!-- Habilidades -->
                 <section class="resume-section">
                     <h2 class="section-title">
+                        <span class="icon-placeholder">Ícone de Brilhos</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
                         Habilidades
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         <div>
-                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-                                Programação
-                            </h4>
+                            <h4 class="font-semibold text-slate-800">Programação</h4>
                             <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
                                 <li>Python (RDKit, Streamlit, Manim)</li>
                                 <li>SQL (Básico)</li>
@@ -109,10 +108,7 @@
                             </ul>
                         </div>
                          <div>
-                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-component"><path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5Z"/><path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2Z"/><path d="m18.5 8.5 3.5 3.5-3.5 3.5-3.5-3.5 3.5-3.5Z"/><path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15Z"/></svg>
-                                Software e Ferramentas
-                            </h4>
+                            <h4 class="font-semibold text-slate-800">Software e Ferramentas</h4>
                             <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
                                 <li>LaTeX (Avançado, TKZ)</li>
                                 <li>Git & GitHub</li>
@@ -120,10 +116,7 @@
                             </ul>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-languages"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
-                                Idiomas e Outros
-                            </h4>
+                            <h4 class="font-semibold text-slate-800">Idiomas e Outros</h4>
                             <ul class="list-disc list-inside text-sm mt-2 space-y-1 pl-2">
                                 <li>Inglês (Avançado)</li>
                                 <li>Pacote Office</li>
@@ -135,6 +128,7 @@
                 <!-- Experiência -->
                 <section class="resume-section">
                     <h2 class="section-title">
+                        <span class="icon-placeholder">Ícone de Pasta</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                         Experiência
                     </h2>
@@ -165,6 +159,7 @@
                 <!-- Formação Acadêmica -->
                 <section class="resume-section">
                     <h2 class="section-title">
+                        <span class="icon-placeholder">Ícone de Chapéu de Graduação</span>
                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         Formação Acadêmica
                     </h2>
@@ -185,6 +180,7 @@
                 <!-- Atividades Acadêmicas Relevantes -->
                 <section class="resume-section">
                     <h2 class="section-title">
+                        <span class="icon-placeholder">Ícone de Prémio</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
                         Atividades Acadêmicas Relevantes
                     </h2>
@@ -213,20 +209,33 @@
     <script>
         // Função para gerar PDF a partir do conteúdo HTML
         function generatePDF() {
-            // Seleciona o elemento que contém o currículo
-            const element = document.getElementById('resume-content');
+            // Clona o elemento do currículo para manipulação
+            const element = document.getElementById('resume-content').cloneNode(true);
+            
+            // Remove os SVGs do clone, deixando apenas os placeholders (que estão escondidos)
+            // Isso evita erros de renderização da biblioteca html2pdf
+            element.querySelectorAll('svg').forEach(svg => svg.remove());
+            
+            // Adiciona o clone modificado ao corpo temporariamente para renderização
+            // (invisível para o utilizador)
+            element.style.position = 'absolute';
+            element.style.left = '-9999px';
+            document.body.appendChild(element);
 
             // Define as opções para a geração do PDF
             const opt = {
               margin:       [0.5, 0.5, 0.5, 0.5], // [top, left, bottom, right] em polegadas
               filename:     'Curriculo_Gabriel_Coelho.pdf',
               image:        { type: 'jpeg', quality: 0.98 },
-              html2canvas:  { scale: 2, useCORS: true }, // Escala maior para melhor qualidade de imagem
+              html2canvas:  { scale: 2, useCORS: true }, // Escala maior para melhor qualidade
               jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
 
-            // Usa a biblioteca html2pdf para criar e salvar o arquivo
-            html2pdf().from(element).set(opt).save();
+            // Usa a biblioteca html2pdf para criar e salvar o arquivo a partir do clone
+            html2pdf().from(element).set(opt).save().then(() => {
+                // Remove o clone do corpo após a geração do PDF
+                document.body.removeChild(element);
+            });
         }
     </script>
 </body>
